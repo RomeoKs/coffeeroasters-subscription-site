@@ -98,6 +98,8 @@ nav ul li a:active {
 .btn:hover {
     background-color: var(--btn-hover);
 }
+
+/* CONTAINER COLLECTION*/
 .title-collection {
     font-family: "Fraunces", serif;
     font-size: 150px;
@@ -174,6 +176,8 @@ nav ul li a:active {
     text-align: center;
     transform: translateY(-12px);
 }
+
+/* CONTAINER CHOOSE*/
 .container-choose {
     width: 100%;
     height: 577px;
@@ -237,6 +241,8 @@ nav ul li a:active {
     line-height: 26px;
     margin-top: 22px;
 }
+
+/* SELECTOR */
 .selection {
     width: 100%;
     margin: 335px auto 0 auto;
@@ -248,7 +254,7 @@ nav ul li a:active {
 .selection-container h4 {
     color: var(--grey);
 }
-/* SELECTOR */
+
 .selector-circle-container {
     width: 791px;
     height: 31px;
@@ -374,7 +380,7 @@ footer {
 	   DESKTOP 1440px
     =====================
 */
-@media screen and (min-width: 961px) {
+@media screen and (min-width: 1025px) {
     nav {
         width: 1280px;
         margin: auto;
@@ -428,14 +434,251 @@ footer {
 }
 
 /* 	=====================
-	    TABLET 375px
+	    TABLET 1024px
     =====================
 */
-@media (min-width: 376px and max-width: 960px) {
+@media (min-width: 481px) and (max-width: 1024px) {
+    nav {
+        width: 689px;
+        margin: 40px auto 0px auto;
+        height: 26px;
+    }
+    nav ul {
+        width: 282px;
+        justify-content: space-between;
+    }
+    main {
+        width: 689px;
+        margin: 0 auto;
+    }
+
+    /* CONTAINER LANDING*/
+    .container-landing {
+        width: 100%;
+        height: 500px;
+        background-image: url("./assets/home/tablet/image-hero-coffeepress.jpg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 10px;
+    }
+    .container-landing h1 {
+        color: #fff;
+        width: 329px;
+        padding-top: 104px;
+        margin-top: 49px;
+        font-size: 48px;
+        line-height: 48px;
+        margin-bottom: 0px;
+    }
+    .container-landing h1,
+    .container-landing p,
+    .container-landing .btn {
+        margin-left: 58px;
+    }
+    .container-landing p {
+        width: 398px;
+        color: var(--light-cream);
+        font-size: 15px;
+        line-height: 25px;
+        opacity: 0.8;
+        padding-bottom: 0;
+        margin-top: 25px;
+    }
+    .btn {
+        width: 217px;
+        height: 56px;
+        margin-top: 26px;
+    }
+
+    /* CONTAINER COLLECTION*/
+    .container-collection {
+        width: 689px;
+    }
+    .title-collection {
+        width: 686px;
+        font-size: 96px;
+        line-height: 72px;
+        text-align: center;
+        left: 0;
+    }
+    .title-container {
+        margin-top: 82px;
+    }
+    .cards-collection {
+        width: 689px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-coffee {
+        width: 573px;
+        flex-direction: row;
+        margin-bottom: 45px;
+    }
+    .card-coffee:last-child {
+        margin-bottom: 0;
+    }
+    .card-coffee .card-image {
+        margin: auto;
+    }
+    .card-coffee h4,
+    .card-coffee p {
+        text-align: left;
+        margin: 0px;
+        transform: translateY(-40px);
+    }
+    .card-coffee p {
+        margin-top: 21px;
+    }
+    .card-coffee div {
+        width: 282px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-items: flex-start;
+    }
+
+    /* CONTAINER CHOOSE*/
+    .container-choose {
+        height: 573px;
+        margin: 593px auto 432px auto;
+    }
+    .cards-choose {
+        flex-direction: column;
+    }
+    .container-choose h2 {
+        font-size: 32px;
+        line-height: 48px;
+        padding-top: 57px;
+    }
+    .container-choose p {
+        font-size: 15px;
+        line-height: 25px;
+        width: 495px;
+        margin-top: 23px;
+        margin-bottom: 70px;
+    }
+    .cards-choose {
+        width: 573px;
+        height: 588px;
+        margin: auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .card-choose {
+        width: 100%;
+        height: 180px;
+        flex-direction: row;
+        align-items: center;
+    }
+    .card-choose img {
+        margin: 0;
+        width: 56px;
+        margin-left: 70px;
+    }
+    .cards-choose:last-child .card-choose:last-child img {
+        width: 55px;
+        margin-top: 71px;
+        margin-left: 70px;
+    }
+    .card-choose h4 {
+        font-size: 24px;
+        line-height: 32px;
+        text-align: left;
+        margin: 0px 0px 15px 55px;
+    }
+    .card-choose p {
+        width: 344px;
+        text-align: left;
+        font-size: 15px;
+        line-height: 25px;
+        margin: 0px 0px 0px 55px;
+    }
+
+    /* SELECTOR */
+    .selection {
+        width: 100%;
+        margin: 0 auto 0 auto;
+    }
+    .selection-container {
+        width: 689px;
+        height: 571px;
+    }
+    .selection-container h4 {
+        font-size: 24px;
+        line-height: 32px;
+        margin: 0px auto;
+    }
+    .selector-circle-container {
+        width: 497px;
+        margin-top: 39px;
+        margin-bottom: 48px;
+    }
+    .selector-circle-container .line {
+        width: 202px;
+    }
+    .selection-container .coffee-picker {
+        width: 689px;
+        height: 371px;
+    }
+    .coffee-picker .selectors {
+        width: 233px;
+        display: flex;
+        flex-direction: column;
+    }
+    .coffee-picker .selectors .selector-number {
+        font-size: 72px;
+        line-height: 72px;
+        margin-bottom: 25px;
+    }
+    .coffee-picker .selectors p {
+        font-size: 15px;
+        line-height: 25px;
+        margin: 12px 0px 0px 0px;
+        width: 204px;
+    }
+    .coffee-picker .selectors .second-p {
+        width: 215px;
+    }
+    .coffee-picker {
+        margin-bottom: 0;
+    }
+    .selection .btn {
+        margin-top: -10px;
+        margin-bottom: 144px;
+    }
+
+    /* FOOTER */
+    footer {
+        margin-bottom: 72px;
+    }
+    .nav-footer {
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 688px;
+        height: 270px;
+        margin: auto;
+    }
+    .nav-links ul {
+        display: flex;
+        flex-direction: row;
+        width: 282px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+        margin: auto;
+    }
+    .nav-footer .logo {
+        margin: 54px 0 23px 0;
+    }
+    .nav-footer .social-icons {
+        margin-top: 68px;
+    }
 }
 /* 	=====================
 	    MOBILE 375px
     =====================
 */
-@media (max-width: 375px) {
+@media (max-width: 480px) {
 }
