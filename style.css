@@ -677,8 +677,253 @@ footer {
     }
 }
 /* 	=====================
-	    MOBILE 375px
+	    MOBILE 480px
     =====================
 */
 @media (max-width: 480px) {
+    header {
+        max-width: 100%;
+    }
+
+    nav {
+        width: 327px;
+        margin: 32px auto 0px auto;
+        height: 18px;
+    }
+    #nav-menu {
+        display: none;
+    }
+    #nav-menu-lines {
+        width: 16px;
+        height: 15px;
+        margin-top: 2px;
+    }
+    #nav-menu-lines .line {
+        height: 3px;
+        width: 16px;
+        background-color: var(--dark-grey-blue);
+        border-radius: 1.5px;
+    }
+    #nav-menu-lines .line.line2,
+    #nav-menu-lines .line.line3 {
+        margin-top: 3px;
+    }
+    main {
+        width: 327px;
+        margin: 0 auto;
+    }
+    /* CONTAINER LANDING*/
+    .container-landing {
+        height: 500px;
+        background: #000;
+        mix-blend-mode: darken;
+        background-image: url("./assets/home/mobile/image-hero-coffeepress.jpg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 10px;
+        margin-top: 90px;
+    }
+    .container-landing h1 {
+        color: var(--light-cream);
+        width: 279px;
+        padding-top: 100px;
+        margin: 0px auto 0px auto;
+        font-size: 40px;
+        line-height: 40px;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+    .container-landing p {
+        width: 279px;
+        text-align: center;
+        color: var(--light-cream);
+        font-size: 15px;
+        line-height: 25px;
+        margin: 25px auto 0px auto;
+    }
+    .btn {
+        width: 217px;
+        height: 56px;
+        margin: 37px auto 0px auto;
+        transform: translateX(25%);
+    }
+    /* CONTAINER COLLECTION*/
+    .container-collection {
+        width: 327px;
+    }
+    .title-container {
+        margin: 120px auto 78px auto;
+        height: 72px;
+    }
+    .title-collection {
+        width: 327px;
+        height: 72px;
+        font-size: 40px;
+        line-height: 72px;
+        text-align: center;
+        left: 0;
+        top: 0;
+        margin: 0 auto;
+    }
+    .title-background {
+        width: 100%;
+        height: 72px;
+    }
+    .cards-collection {
+        width: 282px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-coffee h4,
+    .card-coffee p {
+        text-align: center;
+        margin: 0px;
+    }
+    .card-coffee .card-image {
+        margin: 0px 0px 22px 0px;
+    }
+    .card-coffee p {
+        width: 282px;
+        text-align: center;
+        margin: 27px auto 60px auto;
+        transform: translateY(0px);
+    }
+
+    /* CONTAINER CHOOSE*/
+    .container-choose {
+        height: 902px;
+        width: 327px;
+        margin: 1145px auto 0px auto;
+    }
+    .container-top {
+        width: 100%;
+        height: 177px;
+        margin: 0px;
+    }
+    .container-choose h2 {
+        font-size: 28px;
+        line-height: 28px;
+        padding-top: 64px;
+        margin: 0px;
+    }
+    .container-choose p {
+        font-size: 15px;
+        line-height: 25px;
+        width: 279px;
+        margin-top: 23px;
+    }
+
+    .cards-choose {
+        width: 279px;
+        height: 1194px;
+        margin: auto;
+        flex-direction: column;
+        margin-top: 125px;
+    }
+    .card-choose {
+        width: 100%;
+        height: 382px;
+        margin: 0px auto 0px auto;
+    }
+    .card-choose img {
+        margin: 72px auto 55px auto;
+        width: 72px;
+    }
+    .cards-choose:last-child .card-choose:last-child img {
+        margin-top: 83px;
+    }
+    .card-choose h4 {
+        font-size: 24px;
+        line-height: 32px;
+        text-align: center;
+        margin: 0px 0px 22px 0px;
+    }
+    .card-choose p {
+        width: 200px;
+        text-align: center;
+        font-size: 15px;
+        line-height: 25px;
+        margin: 0px;
+    }
+    /* SELECTOR */
+    .selection {
+        width: 100%;
+        margin: 900px auto 0px auto;
+    }
+    .selection-container {
+        width: 327px;
+        height: 975px;
+    }
+    .selection-container h4 {
+        font-size: 24px;
+        line-height: 32px;
+        text-align: center;
+        margin: 0px auto 78px auto;
+    }
+    .selector {
+        display: none;
+    }
+    .selection-container .coffee-picker {
+        width: 327px;
+        height: 971px;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin: 0px auto;
+    }
+    .selection-container .coffee-picker .selectors {
+        width: 327px;
+        height: 252px;
+    }
+    .coffee-picker .selectors .selector-number {
+        font-size: 72px;
+        line-height: 72px;
+        text-align: center;
+        margin: 0px auto 20px auto;
+    }
+    .coffee-picker .selectors .selector-action {
+        font-size: 28px;
+        line-height: 32px;
+        text-align: center;
+        margin: auto;
+    }
+    .coffee-picker .selectors p {
+        font-size: 15px;
+        line-height: 25px;
+        text-align: center;
+        margin: 22px auto 0px auto;
+        width: 100%;
+    }
+    .selection .btn {
+        margin-top: 160px;
+        margin-bottom: 120px;
+    }
+
+    /* FOOTER */
+    footer {
+        margin-bottom: 72px;
+    }
+    .nav-footer {
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 327px;
+        height: 346px;
+        margin: auto;
+    }
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        width: 282px;
+        height: 86px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+        margin: auto;
+    }
+    .nav-footer .logo {
+        margin: 54px 0 46px 0;
+    }
+    .nav-footer .social-icons {
+        margin-top: 51px;
+    }
 }
