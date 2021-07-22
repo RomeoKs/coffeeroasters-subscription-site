@@ -7,6 +7,7 @@
     --dark-grey: #2c343e;
     --btn-hover: #66d2cf;
     --btn-disabled: #e2dedb;
+    --bk-blend: #a2a2a2;
 }
 /* || CSS reset */
 * {
@@ -408,6 +409,8 @@ footer {
         background-position: center center;
         background-size: cover;
         border-radius: 10px;
+        background-color: var(--bk-blend);
+        background-blend-mode: multiply;
     }
     .container-landing h1 {
         color: #fff;
@@ -467,6 +470,8 @@ footer {
         background-position: center center;
         background-size: cover;
         border-radius: 10px;
+        background-color: var(--bk-blend);
+        background-blend-mode: multiply;
     }
     .container-landing h1 {
         color: #fff;
@@ -795,6 +800,8 @@ footer {
         background-size: cover;
         border-radius: 10px;
         margin-top: 40px;
+        background-color: var(--bk-blend);
+        background-blend-mode: multiply;
     }
     .container-landing h1 {
         color: var(--light-cream);
