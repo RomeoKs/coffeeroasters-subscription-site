@@ -119,6 +119,7 @@ nav ul li a:active {
     padding: 0px;
     width: 442px;
     box-sizing: border-box;
+    opacity: 0.8;
 }
 
 /*----------------------*/
@@ -155,6 +156,9 @@ nav ul li a:active {
     margin: 0px;
     padding: 0px;
     width: 538px;
+}
+.container-commitment div p {
+    opacity: 0.8;
 }
 
 /*----------------------*/
@@ -202,7 +206,7 @@ nav ul li a:active {
 .container-hq {
     width: 1045px;
     height: 366px;
-    margin: 168px auto 157px auto;
+    margin: 168px auto 157px 87px;
 }
 .container-hq .hqs {
     width: 100%;
@@ -227,13 +231,16 @@ nav ul li a:active {
 .container-hq .hq-uk h3,
 .container-hq .hq-can h3,
 .container-hq .hq-aus h3 {
-    margin: 41px 0px 20px 0px;
+    margin: 41px 0px 22px 0px;
 }
 .container-hq .hq-uk p,
 .container-hq .hq-can p,
 .container-hq .hq-aus p {
     margin: 0px;
     padding: 0;
+}
+.container-hq .hq-aus img {
+    margin-top: 6px;
 }
 
 /*----------------------*/
@@ -600,9 +607,155 @@ footer {
         width: 327px;
         margin: 0px auto;
     }
-    /* CONTAINER ABOUT*/
 
-    /* FOOTER */
+    /*----------------------*/
+    /*    CONTAINER ABOUT   */
+    /*----------------------*/
+    .container-about {
+        width: 100%;
+        height: 400px;
+        background-image: url("./assets/about/mobile/image-hero-whitecup.jpg");
+        margin-top: 48px;
+    }
+    .container-about h2 {
+        font-size: 28px;
+        line-height: 28px;
+        text-align: center;
+        margin: 0px;
+        padding-top: 111px;
+    }
+    .container-about p {
+        font-size: 15px;
+        line-height: 25px;
+        text-align: center;
+        width: 279px;
+        margin: 24px auto 0px auto;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    /*----------------------*/
+    /* CONTAINER COMMITMENT*/
+    /*----------------------*/
+    .container-commitment {
+        width: 100%;
+        height: 901px;
+        margin: 140px auto 0px auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .container-commitment .commit-image {
+        width: 100%;
+        height: 400px;
+        background-image: url("./assets/about/mobile/image-commitment.jpg");
+        background-blend-mode: multiply;
+    }
+    .container-commitment div h2 {
+        font-size: 32px;
+        line-height: 48px;
+    }
+    .container-commitment div {
+        width: 100%;
+        height: 453px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .container-commitment div h2,
+    .container-commitment div p {
+        width: 326px;
+        text-align: center;
+    }
+    .container-commitment div p {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    /*----------------------*/
+    /* CONTAINER QUALITY*/
+    /*----------------------*/
+    .container-quality {
+        width: 100%;
+        height: 509px;
+        border-radius: 10px;
+        background-color: var(--dark-grey);
+        background-blend-mode: multiply;
+        display: block;
+        margin-top: 204px;
+        box-sizing: border-box;
+        position: relative;
+    }
+    .container-quality div h2 {
+        font-size: 28px;
+        line-height: 28px;
+        text-align: center;
+        color: var(--light-cream);
+        padding-top: 143px;
+        margin: 0px auto 0px auto;
+    }
+    .container-quality div p {
+        color: var(--light-cream);
+        padding-top: 24px;
+        margin: 0px auto 0px auto;
+        width: 278px;
+        font-size: 15px;
+        line-height: 25px;
+        text-align: center;
+        opacity: 0.8;
+    }
+    .quality-image {
+        width: 279px;
+        height: 156px;
+        background-image: url("./assets/about/mobile/image-quality.jpg");
+        position: absolute;
+        top: -78px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /*----------------------*/
+    /*     CONTAINER HQ     */
+    /*----------------------*/
+    .container-hq {
+        width: 100%;
+        height: 1044px;
+        margin: 120px auto 100px auto;
+    }
+    .container-hq .hqs {
+        width: 100%;
+        flex-direction: column;
+    }
+    .container-hq h4 {
+        text-align: center;
+        margin: 0px 0px 0px 0px;
+        color: var(--grey);
+    }
+    .container-hq .hq-uk,
+    .container-hq .hq-can,
+    .container-hq .hq-aus {
+        height: 262px;
+        margin: 80px auto 0px auto;
+        text-align: center;
+    }
+    .container-hq .hq-uk {
+        margin-top: 70px;
+    }
+    .container-hq .hq-uk h3,
+    .container-hq .hq-can h3,
+    .container-hq .hq-aus h3 {
+        font-size: 28px;
+        margin: 42px 0px 0px 0px;
+        text-align: center;
+    }
+    .container-hq .hq-uk p,
+    .container-hq .hq-can p,
+    .container-hq .hq-aus p {
+        margin: 20px 0px 0px 0px;
+        padding: 0px;
+    }
+    /*----------------------*/
+    /*        FOOTER        */
+    /*----------------------*/
     footer {
         margin-bottom: 72px;
     }
