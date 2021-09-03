@@ -379,7 +379,7 @@ nav ul li a:active {
     opacity: 0.22;
 }
 .dropdown-chevron.disable {
-    cursor: text;
+    cursor: not-allowed;
 }
 .grind.planner-selector.disable {
     color: var(--dark-grey-blue);

@@ -45,16 +45,25 @@ const selectQty = document.querySelector("li.planner-selector.quantity");
 const selectGrind = document.querySelector("li.planner-selector.grind");
 const selectDeliv = document.querySelector("li.planner-selector.delivery");
 
+const optionPrefTitle = document.querySelectorAll(".preference-option h4");
+
+const emptyOptionText = "_____";
+
+//01 Preferences
 toggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
         toggle.parentNode.classList.toggle("active");
         if (preferPref.classList.contains("active")) {
             selectPref.classList.add("prefActive");
+            coffeeType.textContent = optionPrefTitle[0].textContent;
         } else {
             selectPref.classList.remove("prefActive");
+            coffeeType.textContent = emptyOptionText;
         }
     });
 });
+
+//02 Cofee Type/Bean
 toggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
         toggle.classList.toggle("active");
@@ -65,6 +74,8 @@ toggles.forEach((toggle) => {
         }
     });
 });
+
+//03 Quantity
 toggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
         toggle.classList.toggle("active");
@@ -76,6 +87,7 @@ toggles.forEach((toggle) => {
     });
 });
 
+//04 Grind Option
 toggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
         toggle.classList.toggle("active");
@@ -87,6 +99,7 @@ toggles.forEach((toggle) => {
     });
 });
 
+//05 Delivery Option
 toggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
         toggle.classList.toggle("active");
@@ -99,9 +112,10 @@ toggles.forEach((toggle) => {
 });
 
 //Toggle click PREFERENCES - OPTION cards
-for (let i = 0; i < optionPref.length; i++) {
-    optionPref[i].addEventListener("click", toggleActivePref);
-}
+
+optionPref.forEach((option) => {
+    option.addEventListener("click", toggleActivePref);
+});
 
 function toggleActivePref() {
     if (optionPref[1].classList.contains("active") || optionPref[2].classList.contains("active")) {
@@ -124,9 +138,10 @@ function toggleActivePref() {
 }
 
 //Toggle click BEAN TYPE - OPTION cards
-for (let i = 0; i < optionBean.length; i++) {
-    optionBean[i].addEventListener("click", toggleActiveBean);
-}
+
+optionBean.forEach((option) => {
+    option.addEventListener("click", toggleActiveBean);
+});
 
 function toggleActiveBean() {
     if (optionBean[1].classList.contains("active") || optionBean[2].classList.contains("active")) {
@@ -147,10 +162,12 @@ function toggleActiveBean() {
     }
     this.classList.add("active");
 }
+
 //Toggle click QUANTITY - OPTION cards
-for (let i = 0; i < optionQty.length; i++) {
-    optionQty[i].addEventListener("click", toggleActiveQty);
-}
+
+optionQty.forEach((option) => {
+    option.addEventListener("click", toggleActiveQty);
+});
 
 function toggleActiveQty() {
     if (optionQty[1].classList.contains("active") || optionQty[2].classList.contains("active")) {
@@ -171,10 +188,12 @@ function toggleActiveQty() {
     }
     this.classList.add("active");
 }
-//Toggle click QUANTITY - OPTION cards
-for (let i = 0; i < optionGrind.length; i++) {
-    optionGrind[i].addEventListener("click", toggleActiveGrind);
-}
+
+//Toggle click GRIND - OPTION cards
+
+optionGrind.forEach((option) => {
+    option.addEventListener("click", toggleActiveGrind);
+});
 
 function toggleActiveGrind() {
     if (
@@ -199,9 +218,9 @@ function toggleActiveGrind() {
     this.classList.add("active");
 }
 //Toggle click DELIVERY - OPTION cards
-for (let i = 0; i < optionDeliv.length; i++) {
-    optionDeliv[i].addEventListener("click", toggleActiveDeliv);
-}
+optionDeliv.forEach((option) => {
+    option.addEventListener("click", toggleActiveDeliv);
+});
 
 function toggleActiveDeliv() {
     if (
@@ -231,50 +250,29 @@ function toggleActiveDeliv() {
 //---------------------------
 
 const orderSummary = document.getElementById("orderSummary");
-var coffeeType = "_____";
-var cofeeBean = "_____";
-var cofeeQty = "_____";
-var cofeeGrind = "_____";
-var cofeeDeliv = "_____";
+let coffeeType = document.querySelector(".cofeeType");
+let cofeeBean = document.querySelector("cofeeBean");
+let cofeeQty = document.querySelector("cofeeQty");
+let cofeeGrind = document.querySelector("cofeeGrind");
+let cofeeDeliv = document.querySelector("cofeeDeliv");
+//coffeeType.textContent = "2";
 
 const grindDropDown = document.querySelector(".grind-dropdown .dropdown-chevron");
+const capsule = document.querySelector("#capsOpt");
 
-/* function isCapsuleSelected() {
+function capsuleSelected() {
     if (capsule.classList.contains("active")) {
         coffeeType === "Capsule";
         preferGrind.classList.add("disable");
         selectGrind.classList.add("disable");
         grindDropDown.classList.add("disable");
         preferGrind.classList.remove("active");
-    } else {
-        coffeeType = "_____";
     }
-} */
-
-/* isCapsuleSelected(); */
-
-var elemToObserve = document.querySelector("#capsOpt.preference-option.option");
-
-var prevClassState = elemToObserve.classList.contains("#capsOpt.preference-option.option");
-var observer = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
-        if (mutation.attributeName == "class") {
-            var currentClassState = mutation.target.classList.contains("active");
-            if (prevClassState !== currentClassState) {
-                prevClassState = currentClassState;
-                if (currentClassState) {
-                    coffeeType = "Capsule";
-                    preferGrind.classList.add("disable");
-                    selectGrind.classList.add("disable");
-                    grindDropDown.classList.add("disable");
-                    preferGrind.classList.remove("active");
-                    console.log(coffeeType);
-                } else {
-                    coffeeType = "_____";
-                    console.log(coffeeType);
-                }
-            }
-        }
-    });
+    console.log(coffeeType);
+}
+capsule.addEventListener("click", () => {
+    capsuleSelected();
 });
-observer.observe(elemToObserve, { attributes: true });
+
+//Try to build a nodelist of the H4's and assign them to each option.
+//Remove dropdown class for Grind option if capsule is selected
