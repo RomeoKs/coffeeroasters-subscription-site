@@ -374,12 +374,13 @@ nav ul li a:active {
 }
 /*DISABLED CLASS*/
 .grind-dropdown.dropdown.disable {
-    cursor: text;
+    cursor: not-allowed;
     color: var(--dark-grey-blue);
     opacity: 0.22;
 }
 .dropdown-chevron.disable {
     cursor: not-allowed;
+    pointer-events: none;
 }
 .grind.planner-selector.disable {
     color: var(--dark-grey-blue);
