@@ -394,12 +394,18 @@ nav ul li a:active {
     background-color: var(--dark-grey);
     margin-bottom: 208px;
 }
+.order p {
+    width: 580px;
+}
 .order .btn {
     width: 217px;
     height: 56px;
     position: absolute;
     right: 0;
     top: 246px;
+}
+.order .btn.active {
+    background-color: var(--dark-cyan);
 }
 .order div {
     padding: 27px 64px;
@@ -424,7 +430,8 @@ nav ul li a:active {
     color: #ffffff;
     margin: 8px 0px 0px 0px;
 }
-#order-summary span {
+#order-summary span,
+.modal-content h4 span {
     color: var(--dark-cyan);
 }
 
@@ -483,7 +490,85 @@ footer {
 .icon {
     fill: var(--light-cream);
 }
-
+/*----------------------*/
+/*        MODAL        */
+/*----------------------*/
+.modal {
+    display: none;
+}
+.modal.active {
+    position: fixed;
+    top: calc((100%-597px) / 11);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 540px;
+    height: 597px;
+    background-color: var(--light-cream);
+    border-radius: 8px;
+    z-index: 2;
+    display: block;
+}
+.background-modal {
+    display: none;
+}
+.background-modal.active {
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    background: #000000;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    z-index: 1;
+    display: block;
+}
+.modal-top {
+    width: 100%;
+    height: 136px;
+    background-color: var(--dark-grey-blue);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.modal-top h2 {
+    color: #fff;
+    z-index: 3;
+    margin-left: 56px;
+    padding: 0px;
+}
+.modal-content {
+    width: 428px;
+    height: 348px;
+    margin: 56px auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.modal-content h4 {
+    color: var(--grey);
+    margin: 0px;
+}
+.modal-content p {
+    color: var(--dark-grey-blue);
+    margin: 0px;
+}
+.modal-bottom {
+    width: 428px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-bottom .btn {
+    width: 217px;
+    height: 56px;
+}
+.modal-bottom h3 {
+    margin: 0px;
+    line-height: 40px;
+}
 /* 	=====================
 	   DESKTOP 1440px
     =====================

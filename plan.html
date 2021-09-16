@@ -38,6 +38,29 @@
                 </div>
             </nav>
         </header>
+        <div class="background-modal"></div>
+        <div class="modal">
+            <div class="modal-top"><h2>Order Summary</h2></div>
+            <div class="modal-content">
+                <h4>
+                    “I drink my coffee as <span class="coffeeTypeOrder">_____</span>, with a
+                    <span class="coffeeBeanOrder">_____</span> type of bean.
+                    <span class="coffeeQtyOrder">_____</span> ground ala
+                    <span class="coffeeGrindOrder">_____</span>, sent to me
+                    <span class="coffeeDelivOrder">_____</span>.”
+                </h4>
+                <p>
+                    Is this correct? You can proceed to checkout or go back to plan selection if
+                    something is off. Subscription discount codes can also be redeemed at the
+                    checkout.
+                </p>
+                <div class="modal-bottom">
+                    <h3 class="amount">$14/month</h3>
+                    <button class="btn">Checkout</button>
+                </div>
+            </div>
+        </div>
+
         <main>
             <section class="container-create-plan">
                 <h1>Create a plan</h1>
@@ -252,22 +275,14 @@
                             <div>
                                 <h5>Order Summary</h5>
                                 <p id="order-summary">
-                                    “I drink coffee <span class="cofeeType">_____</span>, with a
-                                    <span class="cofeeBean">_____</span> type of bean.
-                                    <span class="cofeeQty">_____</span> round ala
-                                    <span class="cofeeGrind">_____</span>, sent to me
-                                    <span class="cofeeDeliv">_____</span>.”
+                                    “I drink coffee <span class="coffeeType">_____</span>, with a
+                                    <span class="coffeeBean">_____</span> type of bean.
+                                    <span class="coffeeQty">_____</span> ground ala
+                                    <span class="coffeeGrind">_____</span>, sent to me
+                                    <span class="coffeeDeliv">_____</span>.”
                                 </p>
                             </div>
-                            <button class="btn" disabled>Create my plan!</button>
-                        </div>
-
-                        <div class="modal">
-                            <!-- Order Summary “I drink coffee _____, with a _____ type of bean. _____
-                            ground ala _____, sent to me _____.” Is this correct? You can proceed to
-                            checkout or go back to plan selection if something is off. Subscription
-                            discount codes can also be redeemed at the checkout. $_____/month
-                            Checkout -->
+                            <button id="createPlan" class="btn">Create my plan!</button>
                         </div>
                     </div>
                 </div>
