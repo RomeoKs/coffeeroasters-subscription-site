@@ -78,16 +78,18 @@ function isPrefActive() {
                 selectGrind.classList.add("disable");
                 grindDropDown.classList.add("disable");
                 grindDropDown.classList.remove("active");
+                preferGrind.classList.remove("active");
                 selectPref.classList.add("prefActive");
+
                 prefCardValue.textContent = this.childNodes[1].textContent;
                 grindCardValue.textContent = "_____";
             } else if (this.classList.contains("active") && !capsule.classList.contains("active")) {
                 prefCardValue.textContent = this.childNodes[1].textContent;
                 selectPref.classList.add("prefActive");
                 preferGrind.classList.remove("disable");
+                preferGrind.classList.remove("active");
                 selectGrind.classList.remove("disable");
                 grindDropDown.classList.remove("disable");
-                grindDropDown.classList.remove("active");
             }
         });
     });
@@ -210,3 +212,4 @@ function orderSummary() {
     grindOrderSummary.textContent = grindCardValue.textContent;
     delivOrderSummary.textContent = delivCardValue.textContent;
 }
+//Close X button for exit modal
