@@ -389,26 +389,29 @@ nav ul li a:active {
 /*END OF ACTIVE CLASS*/
 .order {
     width: 730px;
-    height: 208px;
-    position: relative;
-    background-color: var(--dark-grey);
+    height: 304px;
+    display: flex;
     margin-bottom: 208px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: flex-end;
 }
-.order p {
-    width: 580px;
-}
+
 .order .btn {
     width: 217px;
     height: 56px;
-    position: absolute;
-    right: 0;
-    top: 246px;
 }
 .order .btn.active {
     background-color: var(--dark-cyan);
 }
 .order div {
-    padding: 27px 64px;
+    width: 689px;
+    height: 208px;
+    padding: 27px 64px 0px 64px;
+    margin-bottom: 40px;
+    background-color: var(--dark-grey);
+    border-radius: 10px;
+    box-sizing: border-box;
 }
 .order div h5 {
     font-style: normal;
@@ -419,16 +422,18 @@ nav ul li a:active {
     color: #ffffff;
     mix-blend-mode: normal;
     opacity: 0.5;
-    margin: 0px;
+    margin: 0px 0px 8px 0px;
 }
 .order div p {
+    width: 580px;
+    margin: 0;
+    padding: 0;
     font-family: "Fraunces", serif;
     font-style: normal;
     font-weight: 900;
     font-size: 24px;
     line-height: 40px;
     color: #ffffff;
-    margin: 8px 0px 0px 0px;
 }
 #order-summary span,
 .modal-content h4 span {
@@ -494,7 +499,10 @@ footer {
 /*        MODAL        */
 /*----------------------*/
 .modal {
-    display: none;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.7s linear;
 }
 .modal.active {
     position: fixed;
@@ -507,6 +515,7 @@ footer {
     border-radius: 8px;
     z-index: 2;
     display: block;
+    opacity: 1;
 }
 .background-modal {
     display: none;
@@ -521,6 +530,7 @@ footer {
     z-index: 1;
     display: block;
 }
+
 .modal-top {
     width: 100%;
     height: 136px;
@@ -530,12 +540,39 @@ footer {
     align-items: center;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    position: relative;
 }
 .modal-top h2 {
     color: #fff;
     z-index: 3;
     margin-left: 56px;
     padding: 0px;
+}
+.close-X {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+}
+.close-X::after {
+    content: "";
+    height: 25px;
+    border-left: 2px solid #ffff;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    transform: rotate(-45deg);
+}
+.close-X::before {
+    content: "";
+    height: 25px;
+    border-right: 2px solid #ffff;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    transform: rotate(45deg);
 }
 .modal-content {
     width: 428px;
@@ -604,19 +641,59 @@ footer {
         justify-content: space-between;
     }
     main {
-        width: 689px;
+        width: 768px;
         margin: 0 auto;
     }
+    /*----------------------*/
+    /*        MODAL         */
+    /*----------------------*/
+    .modal.active {
+        position: fixed;
+        top: 210px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 540px;
+        height: 597px;
+        background-color: var(--light-cream);
+        border-radius: 8px;
+        z-index: 2;
+        display: block;
+        opacity: 1;
+    }
+    /*----------------------*/
+    /*    CREATE A PLAN     */
+    /*----------------------*/
+
+    .container-create-plan {
+        width: 689px;
+        height: 400px;
+        background-position: -65px center;
+        margin-top: 53px;
+    }
+    .container-create-plan h1 {
+        font-size: 48px;
+        line-height: 48px;
+        margin-left: 58px;
+    }
+    .container-create-plan p {
+        font-size: 15px;
+        line-height: 25px;
+        margin: 24px 0px 0px 58px;
+    }
+
     /*----------------------*/
     /*       SELECTOR       */
     /*----------------------*/
     .selection {
-        width: 100%;
-        margin: 0 auto 0 auto;
+        width: 768px;
+        height: 640px;
+        margin: 144px auto 0 auto;
     }
     .selection-container {
         width: 689px;
-        height: 571px;
+        height: 473px;
+        top: 97px;
+        left: 39px;
     }
     .selection-container h4 {
         font-size: 24px;
@@ -625,7 +702,6 @@ footer {
     }
     .selector-circle-container {
         width: 497px;
-        margin-top: 39px;
         margin-bottom: 48px;
     }
     .selector-circle-container .line {
@@ -636,43 +712,90 @@ footer {
         height: 371px;
     }
     .coffee-picker .selectors {
-        width: 233px;
+        width: 223px;
         display: flex;
         flex-direction: column;
+        margin: 0px;
     }
     .coffee-picker .selectors .selector-number {
         font-size: 72px;
         line-height: 72px;
-        margin-bottom: 25px;
+        margin-bottom: 42px;
+    }
+    .coffee-picker .selectors .selector-action {
+        width: 223px;
+        font-size: 28px;
+        line-height: 32px;
+        margin: 0;
     }
     .coffee-picker .selectors p {
         font-size: 15px;
         line-height: 25px;
-        margin: 12px 0px 0px 0px;
-        width: 204px;
-    }
-    .coffee-picker .selectors .second-p {
-        width: 215px;
+        margin: 38px 0px 0px 0px;
+        width: 223px;
     }
     .coffee-picker {
+        width: 689px;
         margin-bottom: 0;
     }
-    .selection .btn {
-        margin-top: -10px;
-        margin-bottom: 144px;
+    /*----------------------*/
+    /*       PLANNER       */
+    /*----------------------*/
+    .planner .planner-container {
+        width: 689px;
+        margin: 144px auto 0px auto;
     }
-
+    .planner-selectors {
+        display: none;
+    }
+    .dropdowns {
+        width: 100%;
+    }
+    .planner-container .dropdowns-container {
+        width: 100%;
+        margin: 0;
+    }
+    .planner-container .dropdowns-container h2 {
+        font-size: 32px;
+        line-height: 48px;
+        margin: 0px;
+        color: var(--grey);
+    }
+    .dropdown-chevron {
+        width: 689px;
+        margin-bottom: 40px;
+    }
+    .dropdowns .dropdown {
+        margin-bottom: 88px;
+    }
+    .planner-container .dropdowns-container .dropdowns .dropdown .options {
+        width: 689px;
+    }
+    .option {
+        width: 223px;
+        padding: 0px 25px;
+    }
+    .option p {
+        line-height: 26px;
+    }
+    .order {
+        width: 689px;
+        margin-top: 140px;
+        margin-bottom: 0px;
+        align-items: center;
+    }
     /*----------------------*/
     /*        FOOTER        */
     /*----------------------*/
     footer {
+        margin-top: 144px;
         margin-bottom: 72px;
     }
     .nav-footer {
         flex-direction: column;
         justify-content: flex-start;
         width: 688px;
-        height: 270px;
+        height: 144px;
         margin: auto;
     }
     .nav-links ul {

@@ -1,37 +1,36 @@
 //------------------
-//----NAVIGATION----
-//------------------
-
-const menuOpen = document.getElementById("nav-menu-lines");
-const menuClose = document.getElementById("nav-menu-close");
-const navLink = document.getElementById("nav-menu");
-const menuBk = document.querySelector(".nav-bk");
-
-menuOpen.addEventListener("click", () => {
-    navLink.classList.add("active");
-    menuBk.classList.add("active");
-    menuClose.classList.add("active");
-    menuOpen.classList.remove("active");
-});
-menuClose.addEventListener("click", () => {
-    navLink.classList.remove("active");
-    menuBk.classList.remove("active");
-    menuOpen.classList.add("active");
-    menuClose.classList.remove("active");
-});
-
-//------------------
 //-----PLANNER
 //------------------
 const toggles = document.querySelectorAll(".dropdown-chevron");
 
 // Toggler chevron
+//if (window.matchMedia("(min-width: 481px)") && window.matchMedia("(max-width: 1024px)"))
+const tabletSmall = window.matchMedia("(min-width: 481px)");
+const tabletLarge = window.matchMedia("(max-width: 1024px)");
 toggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
         toggle.parentNode.classList.toggle("active");
     });
 });
-
+function ifTablet() {
+    if (tabletSmall.matches) {
+        toggles.forEach((toggle) => {
+            toggle.parentNode.classList.add("active");
+            console.log("active");
+        });
+    } else if (window.matchMedia("(min-width: 1026px)")) {
+        toggles.forEach((toggle) => {
+            toggle.parentNode.classList.remove("active");
+        });
+        toggles.forEach((toggle) => {
+            toggle.addEventListener("click", () => {
+                toggle.parentNode.classList.toggle("active");
+                console.log("active");
+            });
+        });
+    }
+}
+//ifTablet();
 // Cards options
 
 const prefCards = document.querySelectorAll(".preference-option");
@@ -80,16 +79,16 @@ function isPrefActive() {
                 grindDropDown.classList.remove("active");
                 preferGrind.classList.remove("active");
                 selectPref.classList.add("prefActive");
-
                 prefCardValue.textContent = this.childNodes[1].textContent;
                 grindCardValue.textContent = "_____";
             } else if (this.classList.contains("active") && !capsule.classList.contains("active")) {
                 prefCardValue.textContent = this.childNodes[1].textContent;
                 selectPref.classList.add("prefActive");
                 preferGrind.classList.remove("disable");
-                preferGrind.classList.remove("active");
+                preferGrind.classList.add("active");
                 selectGrind.classList.remove("disable");
                 grindDropDown.classList.remove("disable");
+                grindDropDown.classList.add("active");
             }
         });
     });
@@ -176,6 +175,7 @@ function isOrderComplete() {
 
 //Ordar Summary Modal
 const bkPage = document.querySelector(".background-modal");
+const closeX = document.querySelector(".close-X");
 const bkPageActive = document.querySelector(".background-modal.active");
 const modal = document.querySelector(".modal");
 const checkoutBtn = document.querySelector(".modal-bottom .btn");
@@ -188,6 +188,7 @@ function goBack() {
 }
 
 bkPage.addEventListener("click", goBack);
+closeX.addEventListener("click", goBack);
 
 createPlanBtn.addEventListener("click", () => {
     bkPage.classList.add("active");
@@ -213,3 +214,4 @@ function orderSummary() {
     delivOrderSummary.textContent = delivCardValue.textContent;
 }
 //Close X button for exit modal
+//Menu script separetely from plan your order
