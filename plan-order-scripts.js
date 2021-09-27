@@ -3,34 +3,21 @@
 //------------------
 const toggles = document.querySelectorAll(".dropdown-chevron");
 
-// Toggler chevron
-//if (window.matchMedia("(min-width: 481px)") && window.matchMedia("(max-width: 1024px)"))
-const tabletSmall = window.matchMedia("(min-width: 481px)");
-const tabletLarge = window.matchMedia("(max-width: 1024px)");
+// Toggler chevron with screen size conditions
+const mobileMax = window.matchMedia("(max-width: 481px)");
+
 toggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
         toggle.parentNode.classList.toggle("active");
     });
 });
-function ifTablet() {
-    if (tabletSmall.matches) {
-        toggles.forEach((toggle) => {
-            toggle.parentNode.classList.add("active");
-            console.log("active");
-        });
-    } else if (window.matchMedia("(min-width: 1026px)")) {
-        toggles.forEach((toggle) => {
-            toggle.parentNode.classList.remove("active");
-        });
-        toggles.forEach((toggle) => {
-            toggle.addEventListener("click", () => {
-                toggle.parentNode.classList.toggle("active");
-                console.log("active");
-            });
-        });
+function ifMobile() {
+    if (mobileMax.matches) {
+        mobileAmount.style.display = "inline";
     }
 }
-//ifTablet();
+window.addEventListener("resize", ifMobile);
+
 // Cards options
 
 const prefCards = document.querySelectorAll(".preference-option");
@@ -65,6 +52,9 @@ const selectDeliv = document.querySelector("li.planner-selector.delivery");
 const capsule = document.getElementById("capsOpt");
 const grindDropDown = document.querySelector(".grind-dropdown .dropdown-chevron");
 const preferGrind = document.querySelector(".grind-dropdown");
+let coffeeTypeBeforeText = document.getElementById("coffeeTypeBeforeText");
+const grindTextOrder = document.getElementById("grind");
+const grindTextModal = document.getElementById("grind-modal");
 
 function isPrefActive() {
     prefCards.forEach((card) => {
@@ -79,10 +69,15 @@ function isPrefActive() {
                 grindDropDown.classList.remove("active");
                 preferGrind.classList.remove("active");
                 selectPref.classList.add("prefActive");
+                coffeeTypeBeforeText.textContent = " using";
                 prefCardValue.textContent = this.childNodes[1].textContent;
+                prefCardValue.textContent = `${this.childNodes[1].textContent}s`;
                 grindCardValue.textContent = "_____";
+                grindTextOrder.style.display = "none";
+                grindTextModal.style.display = "none";
             } else if (this.classList.contains("active") && !capsule.classList.contains("active")) {
                 prefCardValue.textContent = this.childNodes[1].textContent;
+                coffeeTypeBeforeText.textContent = " as";
                 selectPref.classList.add("prefActive");
                 preferGrind.classList.remove("disable");
                 preferGrind.classList.add("active");
@@ -151,6 +146,7 @@ cardsArea.addEventListener("click", function () {
     isGrindActive();
     isDelivActive();
     isOrderComplete();
+    updateShipmentPrice();
 });
 
 //Activate Create my plan! button
@@ -160,20 +156,19 @@ createPlanBtn.disabled = true;
 
 function isOrderComplete() {
     if (
-        prefCardValue.textContent === "_____" &&
-        beanCardValue.textContent === "_____" &&
-        qtyCardValue.textContent === "_____" &&
-        //grindCardValue.textContent === "_____" &&
-        delivCardValue.textContent === "_____"
+        prefCardValue.textContent !== "_____" &&
+        beanCardValue.textContent !== "_____" &&
+        qtyCardValue.textContent !== "_____" &&
+        delivCardValue.textContent !== "_____"
     ) {
-        createPlanBtn.disabled = true;
-    } else {
         createPlanBtn.disabled = false;
         createPlanBtn.classList.add("active");
+    } else {
+        createPlanBtn.disabled = true;
     }
 }
 
-//Ordar Summary Modal
+//Order Summary Modal
 const bkPage = document.querySelector(".background-modal");
 const closeX = document.querySelector(".close-X");
 const bkPageActive = document.querySelector(".background-modal.active");
@@ -213,5 +208,42 @@ function orderSummary() {
     grindOrderSummary.textContent = grindCardValue.textContent;
     delivOrderSummary.textContent = delivCardValue.textContent;
 }
-//Close X button for exit modal
-//Menu script separetely from plan your order
+//Amount values
+const amountWeekly = document.getElementById("amountWeekly");
+const amountBiWeekly = document.getElementById("amountBiWeekly");
+const amountMonthly = document.getElementById("amountMonthly");
+
+let quantity = qtyCardValue;
+let delivery = delivCardValue;
+
+function updateShipmentPrice() {
+    if (quantity.textContent == "250g") {
+        amountWeekly.textContent = "$7.20";
+        amountBiWeekly.textContent = "$9.60";
+        amountMonthly.textContent = "$12.00";
+    } else if (quantity.textContent == "500g") {
+        amountWeekly.textContent = "$13.00";
+        amountBiWeekly.textContent = "$17.50";
+        amountMonthly.textContent = "$22.00";
+    } else if (quantity.textContent == "1000g") {
+        amountWeekly.textContent = "$22.00";
+        amountBiWeekly.textContent = "$32.00";
+        amountMonthly.textContent = "$42.00";
+    }
+    //return
+}
+
+//Modal - Calculation per month cost
+
+const mobileAmountPerMonth = document.querySelector(".btn-amount");
+const amountPerMonth = document.querySelector(".amount");
+function modalAmountPerMonth() {
+    let finalPrice;
+    //User regex to extract $ sign
+    //If delivery card is selected extract the selected amount to modal order
+    finalPrice = parseFloat(amountWeekly.textContent);
+    amountPerMonth.textContent = "$" + finalPrice.toFixed(2) + "/mo";
+}
+
+//Add Calculation per month to mobile modal
+//Refactore code using functions
