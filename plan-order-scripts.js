@@ -11,13 +11,14 @@ toggles.forEach((toggle) => {
         toggle.parentNode.classList.toggle("active");
     });
 });
+/*
 function ifMobile() {
     if (mobileMax.matches) {
         mobileAmount.style.display = "inline";
     }
 }
 window.addEventListener("resize", ifMobile);
-
+*/
 // Cards options
 
 const prefCards = document.querySelectorAll(".preference-option");
@@ -147,8 +148,9 @@ cardsArea.addEventListener("click", function () {
     isDelivActive();
     isOrderComplete();
     updateShipmentPrice();
+    updateFinalPrice();
 });
-
+updatePriceIfQuantityIsChanged();
 //Activate Create my plan! button
 
 const createPlanBtn = document.getElementById("createPlan");
@@ -237,13 +239,200 @@ function updateShipmentPrice() {
 
 const mobileAmountPerMonth = document.querySelector(".btn-amount");
 const amountPerMonth = document.querySelector(".amount");
-function modalAmountPerMonth() {
-    let finalPrice;
-    //User regex to extract $ sign
-    //If delivery card is selected extract the selected amount to modal order
-    finalPrice = parseFloat(amountWeekly.textContent);
-    amountPerMonth.textContent = "$" + finalPrice.toFixed(2) + "/mo";
+let weeklyTotal = document.querySelector(".weeklyChoice.delivery-option.option");
+let BiWeeklyTotal = document.querySelector(".BiWeeklyChoice.delivery-option.option");
+let MonthlyTotal = document.querySelector(".monthlyChoice.delivery-option.option");
+
+//User regex to extract $ sign
+//If delivery card is selected extract the selected amount to modal order
+//finalPrice = parseFloat(amountWeekly.textContent);
+
+function updateFinalPrice() {
+    weeklyTotal.addEventListener("click", function () {
+        //amountPerMonth.textContent = amountWeekly.textContent + "/mo";
+        amountPerMonth.textContent =
+            "$" + Number(amountWeekly.textContent.replace(/[$]/g, "")) * 4 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+    });
+    BiWeeklyTotal.addEventListener("click", function () {
+        amountPerMonth.textContent =
+            "$" + Number(amountBiWeekly.textContent.replace(/[$]/g, "")) * 2 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+    });
+    MonthlyTotal.addEventListener("click", function () {
+        amountPerMonth.textContent =
+            "$" + Number(amountMonthly.textContent.replace(/[$]/g, "")) * 1 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+    });
+    //amountPerMonth.textContent = "$" + finalPrice.toFixed(2) + "/mo";
 }
 
+function updatePriceIfQuantityIsChanged() {
+    const firstQuantity = document.getElementById("firstQuantity");
+    const secondQuantity = document.getElementById("secondQuantity");
+    const thirdQuantity = document.getElementById("thirdQuantity");
+    let weeklyTotalActive = document.querySelector(".weeklyChoice.delivery-option.option.active");
+    let BiWeeklyTotalActive = document.querySelector(
+        ".BiWeeklyChoice.delivery-option.option.active"
+    );
+    let MonthlyTotalActive = document.querySelector(".monthlyChoice.delivery-option.option.active");
+
+    firstQuantity.addEventListener("click", function () {
+        if ((amountWeekly.textContent = "$7.20") && weeklyTotalActive) {
+            amountPerMonth.textContent =
+                "$" + Number(amountWeekly.textContent.replace(/[$]/g, "")) * 4 + "/mo";
+            mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            console.log(weeklyTotalActive);
+        } else if (amountWeekly.textContent == "$13.00") {
+            amountPerMonth.textContent =
+                "$" + Number(amountWeekly.textContent.replace(/[$]/g, "")) * 4 + "/mo";
+            mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            console.log(amountPerMonth.textContent);
+        } else if (amountWeekly.textContent == "$22.00") {
+            amountPerMonth.textContent =
+                "$" + Number(amountWeekly.textContent.replace(/[$]/g, "")) * 4 + "/mo";
+            mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            console.log(amountPerMonth.textContent);
+        }
+    });
+    secondQuantity.addEventListener("click", function () {
+        if (amountBiWeekly.textContent == "$9.60") {
+            amountPerMonth.textContent =
+                "$" + Number(amountBiWeekly.textContent.replace(/[$]/g, "")) * 2 + "/mo";
+            mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            console.log(amountPerMonth.textContent);
+        } else if (amountBiWeekly.textContent == "$17.50") {
+            amountPerMonth.textContent =
+                "$" + Number(amountBiWeekly.textContent.replace(/[$]/g, "")) * 2 + "/mo";
+            mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            console.log(amountPerMonth.textContent);
+        } else if (amountBiWeekly.textContent == "$32.00") {
+            amountPerMonth.textContent =
+                "$" + Number(amountBiWeekly.textContent.replace(/[$]/g, "")) * 2 + "/mo";
+            mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            console.log(amountPerMonth.textContent);
+        }
+    });
+    thirdQuantity.addEventListener("click", function () {
+        if (amountMonthly.textContent == "$12.00") {
+            amountPerMonth.textContent =
+                "$" + Number(amountMonthly.textContent.replace(/[$]/g, "")) * 1 + "/mo";
+            mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            console.log(amountPerMonth.textContent);
+        } else if (amountMonthly.textContent == "$22.00") {
+            amountPerMonth.textContent =
+                "$" + Number(amountMonthly.textContent.replace(/[$]/g, "")) * 1 + "/mo";
+            mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            console.log(amountPerMonth.textContent);
+        } else if (amountMonthly.textContent == "$42.00") {
+            amountPerMonth.textContent =
+                "$" + Number(amountMonthly.textContent.replace(/[$]/g, "")) * 1 + "/mo";
+            mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            console.log(amountPerMonth.textContent);
+        }
+    });
+}
+
+/*
+function updatePriceIfQuantityIsChanged() {
+    if ((quantity.textContent == "250g") & (amountWeekly.textContent == "$7.20")) {
+        amountPerMonth.textContent =
+            "$" + Number(amountWeekly.textContent.replace(/[$]/g, "")) * 4 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+        console.log(amountWeekly.textContent);
+    } else if ((quantity.textContent == "250g") & (amountBiWeekly.textContent == "$9.60")) {
+        amountPerMonth.textContent =
+            "$" + Number(amountBiWeekly.textContent.replace(/[$]/g, "")) * 2 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+        console.log(amountBiWeekly.textContent);
+    } else if ((quantity.textContent == "250g") & (amountMonthly.textContent == "$12.00")) {
+        amountPerMonth.textContent =
+            "$" + Number(amountMonthly.textContent.replace(/[$]/g, "")) * 1 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+        console.log(amountPerMonth.textContent);
+    } else if ((quantity.textContent == "500g") & (amountWeekly.textContent == "$13.00")) {
+        amountPerMonth.textContent =
+            "$" + Number(amountWeekly.textContent.replace(/[$]/g, "")) * 4 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+        console.log(amountWeekly.textContent);
+    } else if ((quantity.textContent == "500g") & (amountBiWeekly.textContent == "$17.50")) {
+        amountPerMonth.textContent =
+            "$" + Number(amountBiWeekly.textContent.replace(/[$]/g, "")) * 2 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+        console.log(amountBiWeekly.textContent);
+    } else if ((quantity.textContent == "500g") & (amountMonthly.textContent == "$22.00")) {
+        amountPerMonth.textContent =
+            "$" + Number(amountMonthly.textContent.replace(/[$]/g, "")) * 1 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+        console.log(amountPerMonth.textContent);
+    } else if ((quantity.textContent == "1000g") & (amountWeekly.textContent == "$22.00")) {
+        amountPerMonth.textContent =
+            "$" + Number(amountWeekly.textContent.replace(/[$]/g, "")) * 4 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+        console.log(amountWeekly.textContent);
+    } else if ((quantity.textContent == "1000g") & (amountBiWeekly.textContent == "$32.00")) {
+        amountPerMonth.textContent =
+            "$" + Number(amountBiWeekly.textContent.replace(/[$]/g, "")) * 2 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+        console.log(amountBiWeekly.textContent);
+    } else if ((quantity.textContent == "1000g") & (amountMonthly.textContent == "$42.00")) {
+        amountPerMonth.textContent =
+            "$" + Number(amountMonthly.textContent.replace(/[$]/g, "")) * 1 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+        console.log(amountPerMonth.textContent);
+    }
+}*/
+/*
+function updatePriceIfQuantityIsChanged() {
+    if (quantity.textContent == "250g") {
+        amountPerMonth.textContent =
+            "$" + Number(amountWeekly.textContent.replace(/[$]/g, "")) * 4 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+    } else if (quantity.textContent == "500g") {
+        amountPerMonth.textContent =
+            "$" + Number(amountBiWeekly.textContent.replace(/[$]/g, "")) * 2 + "/mo";
+        mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+    } else if (quantity.textContent == "1000g") {
+    }
+}
+*/
+/*
+const quantityCards = document.querySelectorAll(".quantity-dropdown .options .option");
+quantityCards.forEach((option) => {
+    option.addEventListener("click", () => {
+        option.addEventListener("click", updatePriceIfQuantityIsChanged());
+    });
+});
+*/
+//updatePriceIfQuantityIsChanged();
 //Add Calculation per month to mobile modal
 //Refactore code using functions
+/*
+function modalAmountPerMonth() {
+    //User regex to extract $ sign
+    //If delivery card is selected extract the selected amount to modal order
+    //finalPrice = parseFloat(amountWeekly.textContent);
+    const quantityCards = document.querySelector(".quantity-dropdown .options");
+    console.log(quantityCards);
+    function updateFinalPrice() {
+        quantityCards.addEventListener("click", function () {
+            if (quantity.textContent == "250g") {
+                amountPerMonth.textContent =
+                    "$" + Number(amountWeekly.textContent.replace(/[$]/g, "")) * 4 + "/mo";
+                mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            } else if (quantity.textContent == "500g") {
+                amountPerMonth.textContent =
+                    "$" + Number(amountBiWeekly.textContent.replace(/[$]/g, "")) * 2 + "/mo";
+                mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            } else if (quantity.textContent == "1000g") {
+                amountPerMonth.textContent =
+                    "$" + Number(amountMonthly.textContent.replace(/[$]/g, "")) * 1 + "/mo";
+                mobileAmountPerMonth.textContent = "-" + amountPerMonth.textContent;
+            }
+        });
+
+        //amountPerMonth.textContent = "$" + finalPrice.toFixed(2) + "/mo";
+    }
+    updateFinalPrice();
+}
+*/
